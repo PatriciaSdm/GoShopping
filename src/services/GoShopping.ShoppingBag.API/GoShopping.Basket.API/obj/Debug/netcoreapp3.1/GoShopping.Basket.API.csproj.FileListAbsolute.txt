@@ -17,3 +17,4 @@ C:\PROJETOS\GoShopping\src\services\GoShopping.ShoppingBag.API\GoShopping.Basket
 C:\PROJETOS\GoShopping\src\services\GoShopping.ShoppingBag.API\GoShopping.Basket.API\obj\Debug\netcoreapp3.1\GoShopping.Basket.API.dll
 C:\PROJETOS\GoShopping\src\services\GoShopping.ShoppingBag.API\GoShopping.Basket.API\obj\Debug\netcoreapp3.1\GoShopping.Basket.API.pdb
 C:\PROJETOS\GoShopping\src\services\GoShopping.ShoppingBag.API\GoShopping.Basket.API\obj\Debug\netcoreapp3.1\GoShopping.Basket.API.genruntimeconfig.cache
+C:\PROJETOS\GoShopping\src\services\GoShopping.ShoppingBag.API\GoShopping.Basket.API\obj\Debug\netcoreapp3.1\GoShopping.Basket.API.csprojAssemblyReference.cache

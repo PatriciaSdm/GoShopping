@@ -17,3 +17,4 @@ C:\PROJETOS\GoShopping\src\services\GoShopping.Order.API\obj\Debug\netcoreapp3.1
 C:\PROJETOS\GoShopping\src\services\GoShopping.Order.API\obj\Debug\netcoreapp3.1\GoShopping.Order.API.dll
 C:\PROJETOS\GoShopping\src\services\GoShopping.Order.API\obj\Debug\netcoreapp3.1\GoShopping.Order.API.pdb
 C:\PROJETOS\GoShopping\src\services\GoShopping.Order.API\obj\Debug\netcoreapp3.1\GoShopping.Order.API.genruntimeconfig.cache
+C:\PROJETOS\GoShopping\src\services\GoShopping.Order.API\obj\Debug\netcoreapp3.1\GoShopping.Order.API.csprojAssemblyReference.cache
