@@ -14,7 +14,7 @@ namespace GoShopping.Identity.API.Models
         [StringLength(100, ErrorMessage = "O campo {0} precisa ter entre {2} e {1} caracteres", MinimumLength = 6)]
         public string Password { get; set; }
 
-        [Compare("Senha", ErrorMessage = "As senhas não conferem.")]
+        [Compare("Password", ErrorMessage = "As senhas não conferem.")]
         public string PasswordConfirmation { get; set; }
     }
 
@@ -29,23 +29,23 @@ namespace GoShopping.Identity.API.Models
         public string Password { get; set; }
     }
 
-    /*public class UsuarioRespostaLogin
+    public class UserResponseLogin
     {
         public string AccessToken { get; set; }
         public double ExpiresIn { get; set; }
-        public UsuarioToken UsuarioToken { get; set; }
+        public UserToken UserToken { get; set; }
     }
 
-    public class UsuarioToken
+    public class UserToken
     {
         public string Id { get; set; }
         public string Email { get; set; }
-        public IEnumerable<UsuarioClaim> Claims { get; set; }
+        public IEnumerable<UserClaim> Claims { get; set; }
     }
 
-    public class UsuarioClaim
+    public class UserClaim
     {
         public string Value { get; set; }
         public string Type { get; set; }
-    }*/
+    }
 }
