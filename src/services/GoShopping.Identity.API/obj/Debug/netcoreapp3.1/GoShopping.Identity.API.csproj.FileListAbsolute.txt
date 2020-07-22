@@ -63,7 +63,6 @@ C:\PROJETOS\GoShopping\src\services\GoShopping.Identity.API\bin\Debug\netcoreapp
 C:\PROJETOS\GoShopping\src\services\GoShopping.Identity.API\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\PROJETOS\GoShopping\src\services\GoShopping.Identity.API\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\PROJETOS\GoShopping\src\services\GoShopping.Identity.API\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-C:\PROJETOS\GoShopping\src\services\GoShopping.Identity.API\obj\Debug\netcoreapp3.1\GoShopping.Identity.API.csprojAssemblyReference.cache
 C:\PROJETOS\GoShopping\src\services\GoShopping.Identity.API\obj\Debug\netcoreapp3.1\GoShopping.Identity.API.AssemblyInfoInputs.cache
 C:\PROJETOS\GoShopping\src\services\GoShopping.Identity.API\obj\Debug\netcoreapp3.1\GoShopping.Identity.API.AssemblyInfo.cs
 C:\PROJETOS\GoShopping\src\services\GoShopping.Identity.API\obj\Debug\netcoreapp3.1\GoShopping.Identity.API.csproj.CoreCompileInputs.cache
@@ -76,3 +75,4 @@ C:\PROJETOS\GoShopping\src\services\GoShopping.Identity.API\obj\Debug\netcoreapp
 C:\PROJETOS\GoShopping\src\services\GoShopping.Identity.API\obj\Debug\netcoreapp3.1\GoShopping.Identity.API.dll
 C:\PROJETOS\GoShopping\src\services\GoShopping.Identity.API\obj\Debug\netcoreapp3.1\GoShopping.Identity.API.pdb
 C:\PROJETOS\GoShopping\src\services\GoShopping.Identity.API\obj\Debug\netcoreapp3.1\GoShopping.Identity.API.genruntimeconfig.cache
+C:\PROJETOS\GoShopping\src\services\GoShopping.Identity.API\obj\Debug\netcoreapp3.1\GoShopping.Identity.API.csprojAssemblyReference.cache

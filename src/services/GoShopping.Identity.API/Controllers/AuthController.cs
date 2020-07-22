@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GoShopping.Identity.API.Controllers
 {
+    [ApiController]
     [Route("api/identity")]
     public class AuthController : Controller
     {
