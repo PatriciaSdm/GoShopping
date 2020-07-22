@@ -1,0 +1,10 @@
+C:\PROJETOS\GoShopping\src\services\GoShopping.Order.API\bin\Debug\netcoreapp3.1\appsettings.Development.json
+C:\PROJETOS\GoShopping\src\services\GoShopping.Order.API\bin\Debug\netcoreapp3.1\appsettings.json
+C:\PROJETOS\GoShopping\src\services\GoShopping.Order.API\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
+C:\PROJETOS\GoShopping\src\services\GoShopping.Order.API\bin\Debug\netcoreapp3.1\GoShopping.Order.API.exe
+C:\PROJETOS\GoShopping\src\services\GoShopping.Order.API\obj\Debug\netcoreapp3.1\GoShopping.Order.API.csprojAssemblyReference.cache
+C:\PROJETOS\GoShopping\src\services\GoShopping.Order.API\obj\Debug\netcoreapp3.1\GoShopping.Order.API.AssemblyInfoInputs.cache
+C:\PROJETOS\GoShopping\src\services\GoShopping.Order.API\obj\Debug\netcoreapp3.1\GoShopping.Order.API.AssemblyInfo.cs
+C:\PROJETOS\GoShopping\src\services\GoShopping.Order.API\obj\Debug\netcoreapp3.1\GoShopping.Order.API.RazorTargetAssemblyInfo.cache
+C:\PROJETOS\GoShopping\src\services\GoShopping.Order.API\obj\Debug\netcoreapp3.1\staticwebassets\GoShopping.Order.API.StaticWebAssets.Manifest.cache
+C:\PROJETOS\GoShopping\src\services\GoShopping.Order.API\obj\Debug\netcoreapp3.1\staticwebassets\GoShopping.Order.API.StaticWebAssets.xml

@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "y0WzEneqZBqnDwWbkX0dbyo/wpiBUKABC6NccX9bqw56yodh/h7cnTUYjIrd8gD2wHavjo+WIyWAGDaABD3mNA==",
+  "success": true,
+  "projectFilePath": "C:\\PROJETOS\\GoShopping\\src\\services\\GoShopping.Identity.API\\GoShopping.Identity.API.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\patri\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.10.9\\microsoft.visualstudio.azure.containers.tools.targets.1.10.9.nupkg.sha512"
+  ],
+  "logs": []
+}
