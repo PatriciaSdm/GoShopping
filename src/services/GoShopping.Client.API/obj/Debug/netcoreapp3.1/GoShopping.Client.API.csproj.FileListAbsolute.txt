@@ -7,6 +7,7 @@ C:\PROJETOS\GoShopping\src\services\GoShopping.Client.API\bin\Debug\netcoreapp3.
 C:\PROJETOS\GoShopping\src\services\GoShopping.Client.API\bin\Debug\netcoreapp3.1\GoShopping.Client.API.runtimeconfig.dev.json
 C:\PROJETOS\GoShopping\src\services\GoShopping.Client.API\bin\Debug\netcoreapp3.1\GoShopping.Client.API.dll
 C:\PROJETOS\GoShopping\src\services\GoShopping.Client.API\bin\Debug\netcoreapp3.1\GoShopping.Client.API.pdb
+C:\PROJETOS\GoShopping\src\services\GoShopping.Client.API\obj\Debug\netcoreapp3.1\GoShopping.Client.API.csprojAssemblyReference.cache
 C:\PROJETOS\GoShopping\src\services\GoShopping.Client.API\obj\Debug\netcoreapp3.1\GoShopping.Client.API.AssemblyInfoInputs.cache
 C:\PROJETOS\GoShopping\src\services\GoShopping.Client.API\obj\Debug\netcoreapp3.1\GoShopping.Client.API.AssemblyInfo.cs
 C:\PROJETOS\GoShopping\src\services\GoShopping.Client.API\obj\Debug\netcoreapp3.1\GoShopping.Client.API.csproj.CoreCompileInputs.cache
@@ -17,4 +18,3 @@ C:\PROJETOS\GoShopping\src\services\GoShopping.Client.API\obj\Debug\netcoreapp3.
 C:\PROJETOS\GoShopping\src\services\GoShopping.Client.API\obj\Debug\netcoreapp3.1\GoShopping.Client.API.dll
 C:\PROJETOS\GoShopping\src\services\GoShopping.Client.API\obj\Debug\netcoreapp3.1\GoShopping.Client.API.pdb
 C:\PROJETOS\GoShopping\src\services\GoShopping.Client.API\obj\Debug\netcoreapp3.1\GoShopping.Client.API.genruntimeconfig.cache
-C:\PROJETOS\GoShopping\src\services\GoShopping.Client.API\obj\Debug\netcoreapp3.1\GoShopping.Client.API.csprojAssemblyReference.cache
