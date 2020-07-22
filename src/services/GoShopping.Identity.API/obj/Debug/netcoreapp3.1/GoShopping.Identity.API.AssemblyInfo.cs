@@ -11,6 +11,7 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.AspNetCore.Identity.UI.UIFrameworkAttribute("Bootstrap4")]
 [assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("48e8a296-6fe6-4268-8c90-530545fa787f")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("GoShopping.Identity.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
