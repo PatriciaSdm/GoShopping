@@ -31,7 +31,7 @@ namespace GoShopping.Identity.API.Controllers
         }
 
         [HttpPost("new-account")]
-        public async Task<ActionResult> Registrar(UserRegister userRegister)
+        public async Task<ActionResult> Register(UserRegister userRegister)
         {
             if (!ModelState.IsValid) return CustomResponse(ModelState);
 
