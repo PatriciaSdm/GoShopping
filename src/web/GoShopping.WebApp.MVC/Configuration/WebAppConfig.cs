@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using GoShopping.WebApp.MVC.Extensions;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -23,9 +24,8 @@ namespace GoShopping.WebApp.MVC.Configuration
             }
             else
             {
-                //app.UseExceptionHandler("/erro/500");
-                //app.UseStatusCodePagesWithRedirects("/erro/{0}");
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/erro/500");
+                app.UseStatusCodePagesWithRedirects("/erro/{0}");
                 app.UseHsts();
                 
             }
@@ -37,7 +37,7 @@ namespace GoShopping.WebApp.MVC.Configuration
 
             app.UseIdentityConfiguration();
 
-            //app.UseMiddleware<ExceptionMiddleware>();
+            app.UseMiddleware<ExceptionMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {
