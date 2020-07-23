@@ -1,4 +1,5 @@
 ﻿using GoShopping.WebApp.MVC.Models;
+using GoShopping.WebApp.MVC.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,12 +10,12 @@ namespace GoShopping.WebApp.MVC.Controllers
 {
     public class IdentityController : MainController
     {
-        /*private readonly IAutenticacaoService _autenticacaoService;
+        private readonly IAuthenticationService _authenticationService;
 
-        public IdentityController(IAutenticacaoService autenticacaoService)
+        public IdentityController(IAuthenticationService authenticationService)
         {
-            _autenticacaoService = autenticacaoService;
-        }*/
+            _authenticationService = authenticationService;
+        }
 
         [HttpGet]
         [Route("new-account")]
@@ -34,11 +35,11 @@ namespace GoShopping.WebApp.MVC.Controllers
             if (false) return View(userRegister);
 
             //Realizar login na APP
+            var response = await _authenticationService.Register(userRegister);
 
             return RedirectToAction("Index", "Home");
 
 
-            //var resposta = await _autenticacaoService.Registro(userRegister);
 
             //if (ResponsePossuiErros(resposta.ResponseResult)) return View(userRegister);
 
@@ -61,6 +62,7 @@ namespace GoShopping.WebApp.MVC.Controllers
             if (!ModelState.IsValid) return View(userLogin);
 
             // API - Login
+            var response = await _authenticationService.Login(userLogin);
 
             if (false) return View(userLogin);
 
@@ -69,9 +71,8 @@ namespace GoShopping.WebApp.MVC.Controllers
             return RedirectToAction("Index", "Home");
 
             //ViewData["ReturnUrl"] = returnUrl;
-            //if (!ModelState.IsValid) return View(userLogin);
 
-            //var resposta = await _autenticacaoService.Login(userLogin);
+            
 
             //if (ResponsePossuiErros(resposta.ResponseResult)) return View(userLogin);
 
