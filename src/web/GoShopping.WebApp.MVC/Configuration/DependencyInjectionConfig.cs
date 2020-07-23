@@ -1,4 +1,6 @@
-﻿using GoShopping.WebApp.MVC.Services;
+﻿using GoShopping.WebApp.MVC.Extensions;
+using GoShopping.WebApp.MVC.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -13,8 +15,8 @@ namespace GoShopping.WebApp.MVC.Configuration
         {
             services.AddHttpClient<IAuthenticationService, AuthenticationService>();
 
-            //services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            //services.AddScoped<IUser, AspNetUser>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped<IUser, AspNetUser>();
         }
     }
 }
