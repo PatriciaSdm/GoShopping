@@ -37,7 +37,7 @@ namespace GoShopping.WebApp.MVC.Controllers
             // API - Registro
             var response = await _authenticationService.Register(userRegister);
 
-            //if (false) return View(userRegister);
+            if (ResponseHasErrors(response.ResponseResult)) return View(userRegister);
 
             //Realizar login na APP
             await ProcessLogin(response);
@@ -70,7 +70,7 @@ namespace GoShopping.WebApp.MVC.Controllers
             // API - Login
             var response = await _authenticationService.Login(userLogin);
 
-            //if (false) return View(userLogin);
+            if (ResponseHasErrors(response.ResponseResult)) return View(userLogin);
 
             //Realizar login na APP
             await ProcessLogin(response);

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GoShopping.WebApp.MVC.Services
 {
-    public class AuthenticationService : IAuthenticationService
+    public class AuthenticationService : Service, IAuthenticationService
     {
         private readonly HttpClient _httpclient;
 
@@ -21,12 +21,20 @@ namespace GoShopping.WebApp.MVC.Services
                 Encoding.UTF8,
                 "application/json");
 
+            var response = await _httpclient.PostAsync("https://localhost:44316/api/identity/authenticate", loginContent);
+
             var options = new JsonSerializerOptions
             {
                 PropertyNameCaseInsensitive = true,
             };
 
-            var response = await _httpclient.PostAsync("https://localhost:44316/api/identity/authenticate", loginContent);
+            if (!ProcessErrorsResponse(response))
+            {
+                return new UserResponseLogin
+                {
+                    ResponseResult = JsonSerializer.Deserialize<ResponseResult>(await response.Content.ReadAsStringAsync(), options)
+                };
+            }
 
             return JsonSerializer.Deserialize<UserResponseLogin>(await response.Content.ReadAsStringAsync(), options);
         }
@@ -38,12 +46,20 @@ namespace GoShopping.WebApp.MVC.Services
               Encoding.UTF8,
               "application/json");
 
+            var response = await _httpclient.PostAsync("https://localhost:44316/api/identity/new-account", registerContent);
+
             var options = new JsonSerializerOptions
             {
                 PropertyNameCaseInsensitive = true,
             };
 
-            var response = await _httpclient.PostAsync("https://localhost:44316/api/identity/new-account", registerContent);
+            if (!ProcessErrorsResponse(response))
+            {
+                return new UserResponseLogin
+                {
+                    ResponseResult = JsonSerializer.Deserialize<ResponseResult>(await response.Content.ReadAsStringAsync(), options)
+                };
+            }
 
             return JsonSerializer.Deserialize<UserResponseLogin>(await response.Content.ReadAsStringAsync(), options);
         }
