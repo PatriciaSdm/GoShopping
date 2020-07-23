@@ -1,18 +1,22 @@
 ﻿using GoShopping.WebApp.MVC.Models;
 using GoShopping.WebApp.MVC.Services;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace GoShopping.WebApp.MVC.Controllers
 {
     public class IdentityController : MainController
     {
-        private readonly IAuthenticationService _authenticationService;
+        private readonly Services.IAuthenticationService _authenticationService;
 
-        public IdentityController(IAuthenticationService authenticationService)
+        public IdentityController(Services.IAuthenticationService authenticationService)
         {
             _authenticationService = authenticationService;
         }
@@ -31,11 +35,13 @@ namespace GoShopping.WebApp.MVC.Controllers
             if (!ModelState.IsValid) return View(userRegister);
 
             // API - Registro
+            var response = await _authenticationService.Register(userRegister);
 
-            if (false) return View(userRegister);
+            //if (false) return View(userRegister);
 
             //Realizar login na APP
-            var response = await _authenticationService.Register(userRegister);
+            await ProcessLogin(response);
+           
 
             return RedirectToAction("Index", "Home");
 
@@ -64,19 +70,20 @@ namespace GoShopping.WebApp.MVC.Controllers
             // API - Login
             var response = await _authenticationService.Login(userLogin);
 
-            if (false) return View(userLogin);
+            //if (false) return View(userLogin);
 
             //Realizar login na APP
+            await ProcessLogin(response);
 
             return RedirectToAction("Index", "Home");
 
             //ViewData["ReturnUrl"] = returnUrl;
 
-            
+
 
             //if (ResponsePossuiErros(resposta.ResponseResult)) return View(userLogin);
 
-            //await RealizarLogin(resposta);
+            
 
             //if (string.IsNullOrEmpty(returnUrl)) return RedirectToAction("Index", "Home");
 
@@ -91,12 +98,12 @@ namespace GoShopping.WebApp.MVC.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        /*private async Task RealizarLogin(UsuarioRespostaLogin resposta)
+        private async Task ProcessLogin(UserResponseLogin response)
         {
-            var token = ObterTokenFormatado(resposta.AccessToken);
+            var token = GetFormattedToken(response.AccessToken);
 
             var claims = new List<Claim>();
-            claims.Add(new Claim("JWT", resposta.AccessToken));
+            claims.Add(new Claim("JWT", response.AccessToken));
             claims.AddRange(token.Claims);
 
             var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
@@ -112,10 +119,10 @@ namespace GoShopping.WebApp.MVC.Controllers
                 new ClaimsPrincipal(claimsIdentity),
                 authProperties);
         }
-        ss
-        private static JwtSecurityToken ObterTokenFormatado(string jwtToken)
+
+        private static JwtSecurityToken GetFormattedToken(string jwtToken)
         {
             return new JwtSecurityTokenHandler().ReadToken(jwtToken) as JwtSecurityToken;
-        }*/
+        }
     }
 }

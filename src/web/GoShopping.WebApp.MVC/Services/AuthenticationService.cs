@@ -38,6 +38,11 @@ namespace GoShopping.WebApp.MVC.Services
               Encoding.UTF8,
               "application/json");
 
+            var options = new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true,
+            };
+
             var response = await _httpclient.PostAsync("https://localhost:44316/api/identity/new-account", registerContent);
 
             return JsonSerializer.Deserialize<UserResponseLogin>(await response.Content.ReadAsStringAsync(), options);
