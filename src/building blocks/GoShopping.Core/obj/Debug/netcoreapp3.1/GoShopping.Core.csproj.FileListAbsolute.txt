@@ -1,9 +1,0 @@
-C:\PROJETOS\GoShopping\src\building blocks\GoShopping.Core\bin\Debug\netcoreapp3.1\GoShopping.Core.deps.json
-C:\PROJETOS\GoShopping\src\building blocks\GoShopping.Core\bin\Debug\netcoreapp3.1\GoShopping.Core.dll
-C:\PROJETOS\GoShopping\src\building blocks\GoShopping.Core\bin\Debug\netcoreapp3.1\GoShopping.Core.pdb
-C:\PROJETOS\GoShopping\src\building blocks\GoShopping.Core\obj\Debug\netcoreapp3.1\GoShopping.Core.csprojAssemblyReference.cache
-C:\PROJETOS\GoShopping\src\building blocks\GoShopping.Core\obj\Debug\netcoreapp3.1\GoShopping.Core.AssemblyInfoInputs.cache
-C:\PROJETOS\GoShopping\src\building blocks\GoShopping.Core\obj\Debug\netcoreapp3.1\GoShopping.Core.AssemblyInfo.cs
-C:\PROJETOS\GoShopping\src\building blocks\GoShopping.Core\obj\Debug\netcoreapp3.1\GoShopping.Core.csproj.CoreCompileInputs.cache
-C:\PROJETOS\GoShopping\src\building blocks\GoShopping.Core\obj\Debug\netcoreapp3.1\GoShopping.Core.dll
-C:\PROJETOS\GoShopping\src\building blocks\GoShopping.Core\obj\Debug\netcoreapp3.1\GoShopping.Core.pdb
