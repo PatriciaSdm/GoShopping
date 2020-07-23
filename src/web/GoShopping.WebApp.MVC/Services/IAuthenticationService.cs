@@ -5,7 +5,7 @@ namespace GoShopping.WebApp.MVC.Services
 {
     public interface IAuthenticationService
     {
-        Task<string> Login(UserLogin userLogin);
-        Task<string> Register(UserRegister userRegister);
+        Task<UserResponseLogin> Login(UserLogin userLogin);
+        Task<UserResponseLogin> Register(UserRegister userRegister);
     }
 }

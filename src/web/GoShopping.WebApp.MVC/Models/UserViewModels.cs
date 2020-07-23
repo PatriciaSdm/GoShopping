@@ -31,12 +31,13 @@ namespace GoShopping.WebApp.MVC.Models
         public string Password { get; set; }
     }
 
-    /*public class UserResponseLogin
+    # region ViewModel para converter token json para string
+    public class UserResponseLogin
     {
         public string AccessToken { get; set; }
         public double ExpiresIn { get; set; }
         public UserToken UserToken { get; set; }
-        public ResponseResult ResponseResult { get; set; }
+        //public ResponseResult ResponseResult { get; set; }
     }
 
     public class UserToken
@@ -50,5 +51,6 @@ namespace GoShopping.WebApp.MVC.Models
     {
         public string Value { get; set; }
         public string Type { get; set; }
-    }*/
+    }
+    #endregion
 }
