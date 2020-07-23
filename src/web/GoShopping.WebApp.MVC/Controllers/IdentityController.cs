@@ -94,7 +94,7 @@ namespace GoShopping.WebApp.MVC.Controllers
         [Route("logout")]
         public async Task<IActionResult> Logout()
         {
-            //await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Index", "Home");
         }
 
