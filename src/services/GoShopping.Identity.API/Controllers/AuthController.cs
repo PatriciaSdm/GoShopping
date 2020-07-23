@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
@@ -40,7 +41,6 @@ namespace GoShopping.Identity.API.Controllers
                 Email = userRegister.Email,
                 EmailConfirmed = true // Não precisa de confirmação por email
             };
-
             var result = await _userManager.CreateAsync(user, userRegister.Password);
 
             if (result.Succeeded)
@@ -83,21 +83,30 @@ namespace GoShopping.Identity.API.Controllers
         {
             var user = await _userManager.FindByEmailAsync(email);
             var claims = await _userManager.GetClaimsAsync(user);
-            var userRoles = await _userManager.GetRolesAsync(user);
 
-            claims.Add(new Claim(JwtRegisteredClaimNames.Sub, user.Id));
-            claims.Add(new Claim(JwtRegisteredClaimNames.Email, user.Email));
-            claims.Add(new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()));
-            claims.Add(new Claim(JwtRegisteredClaimNames.Nbf, ToUnixEpochDate(DateTime.UtcNow).ToString()));      //Quando vai expirar
-            claims.Add(new Claim(JwtRegisteredClaimNames.Iat, ToUnixEpochDate(DateTime.UtcNow).ToString(), ClaimValueTypes.Integer64));       //Quando foi emitido
-            foreach (var userRole in userRoles)
+            var identityClaims = await GetUserClaims(claims, user);
+            var encodedToken = EncodeToken(identityClaims);
+
+            return GetTokenResponse(user, claims, encodedToken);
+        }
+
+        private UserResponseLogin GetTokenResponse(IdentityUser user, IList<Claim> claims, string encodedToken)
+        {
+            return new UserResponseLogin
             {
-                claims.Add(new Claim("role", userRole));
-            }
+                AccessToken = encodedToken,
+                ExpiresIn = TimeSpan.FromHours(_appSettings.ExpirationHours).TotalSeconds,
+                UserToken = new UserToken
+                {
+                    Id = user.Id,
+                    Email = user.Email,
+                    Claims = claims.Select(c => new UserClaim { Type = c.Type, Value = c.Value })
+                }
+            };
+        }
 
-            var identityClaims = new ClaimsIdentity();
-            identityClaims.AddClaims(claims);
-
+        private string EncodeToken(ClaimsIdentity identityClaims)
+        {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
             var token = tokenHandler.CreateToken(new SecurityTokenDescriptor
@@ -109,21 +118,28 @@ namespace GoShopping.Identity.API.Controllers
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             });
 
-            var encodedToken = tokenHandler.WriteToken(token);
+            return tokenHandler.WriteToken(token);
+        }
 
-            var response = new UserResponseLogin
+        private async Task<ClaimsIdentity> GetUserClaims(ICollection<Claim> claims, IdentityUser user)
+        {
+            var userRoles = await _userManager.GetRolesAsync(user);
+
+            claims.Add(new Claim(JwtRegisteredClaimNames.Sub, user.Id));
+            claims.Add(new Claim(JwtRegisteredClaimNames.Email, user.Email));
+            claims.Add(new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()));
+            claims.Add(new Claim(JwtRegisteredClaimNames.Nbf, ToUnixEpochDate(DateTime.UtcNow).ToString()));      //Quando vai expirar
+            claims.Add(new Claim(JwtRegisteredClaimNames.Iat, ToUnixEpochDate(DateTime.UtcNow).ToString(), ClaimValueTypes.Integer64));       //Quando foi emitido
+
+            foreach (var userRole in userRoles)
             {
-                AccessToken = encodedToken,
-                ExpiresIn = TimeSpan.FromHours(_appSettings.ExpirationHours).TotalSeconds,
-                UserToken = new UserToken
-                {
-                    Id = user.Id,
-                    Email = user.Email,
-                    Claims = claims.Select(c => new UserClaim { Type = c.Type, Value = c.Value })
-                }
-            };
+                claims.Add(new Claim("role", userRole));
+            }
 
-            return response;
+            var identityClaims = new ClaimsIdentity();
+            identityClaims.AddClaims(claims);
+
+            return identityClaims;
         }
 
         // Como exibir uma data, padrão do JWT
