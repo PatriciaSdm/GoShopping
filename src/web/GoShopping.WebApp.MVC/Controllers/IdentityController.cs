@@ -41,7 +41,7 @@ namespace GoShopping.WebApp.MVC.Controllers
 
             //Realizar login na APP
             await ProcessLogin(response);
-           
+
 
             return RedirectToAction("Index", "Home");
 
@@ -55,9 +55,9 @@ namespace GoShopping.WebApp.MVC.Controllers
 
         [HttpGet]
         [Route("login")]
-        public IActionResult Login(/*string returnUrl = null*/)
+        public IActionResult Login(string returnUrl = null)
         {
-            /* ViewData["ReturnUrl"] = returnUrl;*/
+            ViewData["ReturnUrl"] = returnUrl;
             return View();
         }
 
@@ -65,6 +65,8 @@ namespace GoShopping.WebApp.MVC.Controllers
         [Route("login")]
         public async Task<IActionResult> Login(UserLogin userLogin, string returnUrl = null)
         {
+            ViewData["ReturnUrl"] = returnUrl;
+
             if (!ModelState.IsValid) return View(userLogin);
 
             // API - Login
@@ -75,19 +77,9 @@ namespace GoShopping.WebApp.MVC.Controllers
             //Realizar login na APP
             await ProcessLogin(response);
 
-            return RedirectToAction("Index", "Home");
+            if (string.IsNullOrEmpty(returnUrl)) return RedirectToAction("Index", "Home");
 
-            //ViewData["ReturnUrl"] = returnUrl;
-
-
-
-            //if (ResponsePossuiErros(resposta.ResponseResult)) return View(userLogin);
-
-            
-
-            //if (string.IsNullOrEmpty(returnUrl)) return RedirectToAction("Index", "Home");
-
-            //return LocalRedirect(returnUrl);
+            return LocalRedirect(returnUrl);
         }
 
         [HttpGet]
