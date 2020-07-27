@@ -11,14 +11,12 @@ namespace GoShopping.WebApp.MVC.Services
     public class AuthenticationService : Service, IAuthenticationService
     {
         private readonly HttpClient _httpclient;
-        private readonly AppSettings _settings;
 
         public AuthenticationService(HttpClient httpClient, IOptions<AppSettings> settings)
         {
-            httpClient.BaseAddress = new Uri(_settings.UrlAuthentication);
+            httpClient.BaseAddress = new Uri(settings.Value.UrlAuthentication);
 
             _httpclient = httpClient;
-            //_settings = settings.Value;
         }
         public async Task<UserResponseLogin> Login(UserLogin userLogin)
         {
@@ -34,7 +32,7 @@ namespace GoShopping.WebApp.MVC.Services
                 };
             }
 
-            return await DeserializeObjectResponse<UserResponseLogin>(response)
+            return await DeserializeObjectResponse<UserResponseLogin>(response);
         }
 
         public async Task<UserResponseLogin> Register(UserRegister userRegister)
