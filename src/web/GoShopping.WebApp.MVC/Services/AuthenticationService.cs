@@ -1,6 +1,8 @@
-﻿using GoShopping.WebApp.MVC.Models;
+﻿using GoShopping.WebApp.MVC.Extensions;
+using GoShopping.WebApp.MVC.Models;
+using Microsoft.Extensions.Options;
+using System;
 using System.Net.Http;
-using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
@@ -9,59 +11,47 @@ namespace GoShopping.WebApp.MVC.Services
     public class AuthenticationService : Service, IAuthenticationService
     {
         private readonly HttpClient _httpclient;
+        private readonly AppSettings _settings;
 
-        public AuthenticationService(HttpClient httpClient)
+        public AuthenticationService(HttpClient httpClient, IOptions<AppSettings> settings)
         {
+            httpClient.BaseAddress = new Uri(_settings.UrlAuthentication);
+
             _httpclient = httpClient;
+            //_settings = settings.Value;
         }
         public async Task<UserResponseLogin> Login(UserLogin userLogin)
         {
-            var loginContent = new StringContent(
-                JsonSerializer.Serialize(userLogin),
-                Encoding.UTF8,
-                "application/json");
+            var loginContent = GetContent(userLogin);
 
-            var response = await _httpclient.PostAsync("https://localhost:44316/api/identity/authenticate", loginContent);
-
-            var options = new JsonSerializerOptions
-            {
-                PropertyNameCaseInsensitive = true,
-            };
+            var response = await _httpclient.PostAsync("/api/identity/authenticate", loginContent);
 
             if (!ProcessErrorsResponse(response))
             {
                 return new UserResponseLogin
                 {
-                    ResponseResult = JsonSerializer.Deserialize<ResponseResult>(await response.Content.ReadAsStringAsync(), options)
+                    ResponseResult = await DeserializeObjectResponse<ResponseResult>(response)
                 };
             }
 
-            return JsonSerializer.Deserialize<UserResponseLogin>(await response.Content.ReadAsStringAsync(), options);
+            return await DeserializeObjectResponse<UserResponseLogin>(response)
         }
 
         public async Task<UserResponseLogin> Register(UserRegister userRegister)
         {
-            var registerContent = new StringContent(
-              JsonSerializer.Serialize(userRegister),
-              Encoding.UTF8,
-              "application/json");
+            var registerContent = GetContent(userRegister);
 
-            var response = await _httpclient.PostAsync("https://localhost:44316/api/identity/new-account", registerContent);
-
-            var options = new JsonSerializerOptions
-            {
-                PropertyNameCaseInsensitive = true,
-            };
+            var response = await _httpclient.PostAsync("/api/identity/new-account", registerContent);
 
             if (!ProcessErrorsResponse(response))
             {
                 return new UserResponseLogin
                 {
-                    ResponseResult = JsonSerializer.Deserialize<ResponseResult>(await response.Content.ReadAsStringAsync(), options)
+                    ResponseResult = await DeserializeObjectResponse<ResponseResult>(response)
                 };
             }
 
-            return JsonSerializer.Deserialize<UserResponseLogin>(await response.Content.ReadAsStringAsync(), options);
+            return await DeserializeObjectResponse<UserResponseLogin>(response);
         }
     }
 }
