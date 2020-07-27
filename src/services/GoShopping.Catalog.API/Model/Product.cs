@@ -1,4 +1,5 @@
 ﻿using GoShopping.Core;
+using GoShopping.Core.DomainObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GoShopping.Catalog.API.Model
 {
-    public class Product : Entity
+    public class Product : Entity, IAggregateRoot
     {
         public string Name { get; set; }
         public string Description { get; set; }
